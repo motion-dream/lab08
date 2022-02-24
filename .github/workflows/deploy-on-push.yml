@@ -1,8 +1,8 @@
-name: deploy to prod server on push
+name: deploy on push
 on: 
   push: 
     branches:
-      - prod
+      -master
 jobs:
   deploy-app:
     runs-on: ubuntu-latest
@@ -12,7 +12,7 @@ jobs:
     - name: copy file to server
       uses: appleboy/scp-action@master
       with:
-        host: ${{secrets.PROD_HOST}}
+        host: ${{secrets.HOST}}
         username: ${{secrets.SSH_USER_NAME}}
         port: ${{secrets.SSH_PORT}}
         key: ${{secrets.SSH_KEY}}
